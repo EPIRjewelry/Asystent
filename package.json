@@ -2,7 +2,8 @@
   "name": "cloud-run-microservice-template",
   "version": "1.0.0",
   "description": "Microservice template for Cloud Run",
-  "main": "index.js",
+  "main": "server.js",
+
   "type": "module",
   "engines": {
     "node": ">=16"

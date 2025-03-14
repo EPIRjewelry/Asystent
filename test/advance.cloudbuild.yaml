@@ -104,3 +104,5 @@ availableSecrets:
   secretManager:
     - versionName: projects/$PROJECT_NUMBER/secrets/GITHUB_PAT/versions/latest
       env: 'GITHUB_PAT'
+options:
+  logging: CLOUD_LOGGING_ONLY

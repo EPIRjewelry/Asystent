@@ -10,6 +10,15 @@
 # limitations under the License.
 
 steps:
+- id: 'Clone Repository from GitHub'
+  name: 'gcr.io/cloud-builders/git'
+  entrypoint: 'bash'
+  secretEnv: ['GITHUB_PAT']
+  args:
+    - '-c'
+    - |
+      git clone https://$$GITHUB_PAT@github.com/NAZWA_UZYTKOWNIKA/NAZWA_REPOZYTORIUM.git .
+
 - id: 'Install Testing Dependencies'
   name: node:20-slim
   args: ['npm', 'install']
@@ -91,3 +100,7 @@ substitutions:
   _SERVICE_NAME: microservice-template
   _DEPLOY_REGION: us-central1
   _REPOSITORY: samples
+availableSecrets:
+  secretManager:
+    - versionName: projects/$PROJECT_NUMBER/secrets/GITHUB_PAT/versions/latest
+      env: 'GITHUB_PAT'
